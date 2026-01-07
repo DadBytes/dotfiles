@@ -5,21 +5,21 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+
 PS1='[\u@\h \W]\$ '
 
+alias ls="lsd -F"
+alias la="lsd -AF"
+alias ll="lsd -lAF"
+alias lg="lsd -F --group-dirs=first"
+
 export PATH="$PATH:/home/brian/bin"
+export EDITOR="nvim"
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# fnm
-FNM_PATH="/home/brian/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "$(fnm env)"
-fi
-
-eval "$(oh-my-posh init bash)"
+eval "$(oh-my-posh init bash --config 'dracula')"
 
 . "$HOME/.cargo/env"
 
@@ -33,3 +33,11 @@ function y() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"
+
+eval "$(zoxide init --cmd cd bash)"
