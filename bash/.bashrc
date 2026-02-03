@@ -14,13 +14,11 @@ alias la="lsd -AF"
 alias ll="lsd -lAF --group-dirs=first"
 alias lg="lsd -F --group-dirs=first"
 
-# export PATH="$PATH:/home/brian/bin"
+export PATH="$PATH:/home/brian/bin"
 export EDITOR="nvim"
 
 # homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-eval "$(oh-my-posh init bash --config 'dracula')"
 
 # uv
 export PATH=$PATH:"$HOME/.local/bin"
@@ -47,3 +45,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # zoxide
 eval "$(zoxide init --cmd cd bash)"
+
+# OMP
+eval "$(oh-my-posh init bash --config 'dracula')"
